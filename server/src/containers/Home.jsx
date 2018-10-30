@@ -7,6 +7,6 @@ export default class Home extends Component {
   }
 
   render() {
-    return (<h1>Homes for christianWen</h1>);
+    return (<h1>Homes for ChristianWen,It is a nice day isn't it?!</h1>);
   }
 }
