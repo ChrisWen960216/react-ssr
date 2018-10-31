@@ -1,6 +1,7 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter, Route, matchPath } from 'react-router-dom';
+import { StaticRouter, Route } from 'react-router-dom';
+import { matchRoutes } from 'react-router-config';
 import { Provider } from 'react-redux';
 import RoutesList from '../routes';
 import generateStore from '../client/store';
@@ -9,13 +10,8 @@ import generateStore from '../client/store';
 export default function render(req) {
   const store = generateStore();
 
-  const matchRoutes = [];
-
-  RoutesList.some((route) => {
-    const match = matchPath(req.path, route);
-    if (match) { matchRoutes.push(route.loadData(match)); }
-    return match;
-  });
+  const matchedRoutes = matchRoutes(RoutesList, req.path);
+  console.log(matchedRoutes);
 
   const content = renderToString(
     <Provider store={store}>
@@ -35,6 +31,7 @@ export default function render(req) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="shortcut icon" href="./title.png">
 </head>
 <body>
   <div id='root'>${content}</div>

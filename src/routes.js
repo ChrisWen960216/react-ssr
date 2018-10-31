@@ -12,13 +12,5 @@ export default [{
 }, {
   path: '/login',
   component: LogIn,
-  exact: true,
 },
 ];
-
-// export default (
-//   <div>
-//     <Route path="/" exact component={Home} />
-//     <Route path="/login" exact component={LogIn} />
-//   </div>
-// );
