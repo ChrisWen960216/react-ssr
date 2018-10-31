@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import HeaderComponent from './common/Header';
 
-export default class Home extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,11 +17,15 @@ export default class Home extends Component {
 
   render() {
     const { count } = this.state;
+    const { name } = this.props;
     return (
       <div>
         <HeaderComponent />
         <h1>
-          Hello Christian:
+          Hello
+          {' '}
+          {name}
+:
           {count}
         </h1>
         <button onClick={this.showMsg} type="button">Click</button>
@@ -28,3 +33,9 @@ export default class Home extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return { name: state.name };
+}
+
+export default connect(mapStateToProps)(Home);
