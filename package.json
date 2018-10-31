@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev":"npm-run-all --parallel dev:**",
-    "dev:build": "webpack --config ./server/webpack.server.js --watch",
-    "dev:start": "nodemon ./server/build/bundle.js"
+    "dev:build:server": "webpack --config ./webpack.server.js --watch",
+    "dev:start": "nodemon ./build/bundle.js",
+    "dev:build:client":"webpack --config ./webpack.client.js --watch"
   },
   "repository": {
     "type": "git",

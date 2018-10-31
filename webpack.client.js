@@ -1,18 +1,15 @@
 const path = require('path');
-const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  target: 'node',
-  entry: './server/src/index.js',
+  entry: './src/client/index.js',
   mode: 'development',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'build'),
+    filename: 'index.js',
+    path: path.resolve(__dirname, 'public'),
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  externals: [nodeExternals()],
   module: {
     rules: [{
       test: /\.(js|jsx)?$/,
