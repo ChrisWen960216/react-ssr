@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import HeaderComponent from './common/Header';
+import getHomeList from '../redux/home/action';
 
 class Home extends Component {
   constructor(props) {
@@ -10,6 +11,12 @@ class Home extends Component {
       count: 0,
     };
     this.showMsg = this.showMsg.bind(this);
+  }
+
+
+  componentDidMount() {
+    const { getHomeList: getHomeListReq } = this.props;
+    return getHomeListReq();
   }
 
   showMsg() {
@@ -37,6 +44,7 @@ class Home extends Component {
 
 Home.propTypes = {
   home: PropTypes.string,
+  getHomeList: PropTypes.func.isRequired,
 };
 
 Home.defaultProps = {
@@ -47,4 +55,10 @@ function mapStateToProps(state) {
   return { ...state.home };
 }
 
-export default connect(mapStateToProps)(Home);
+function mapDispatchToProps(dispatch) {
+  return {
+    getHomeList: () => dispatch(getHomeList()),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

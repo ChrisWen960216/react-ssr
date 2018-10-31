@@ -1,10 +1,9 @@
-import { combineReducers, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
+import { combineReducers } from 'redux';
 
 import home from './redux/home/reducer';
 
 const name = (state = { name: 'christianWen' }) => state;
 
-const reducer = combineReducers({ name, home }, applyMiddleware(thunk));
+const reducer = combineReducers({ name, home });
 
 export default reducer;
