@@ -7,15 +7,13 @@ export default class Home extends Component {
     this.showMsg = this.showMsg.bind(this);
   }
 
-  showMsg() {
-    alert('Hello world');
-  }
+  showMsg() {}
 
   render() {
     return (
       <div>
         <h1>Hello Christian</h1>
-        <button onClick={this.showMsg}>Click</button>
+        <button onClick={this.showMsg} type="button">Click</button>
       </div>
     );
   }
