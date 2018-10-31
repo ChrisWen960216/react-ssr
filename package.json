@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"npm-run-all --parallel dev:**",
-    "dev:build:server": "webpack --config ./webpack.server.js --watch",
+    "dev": "npm-run-all --parallel dev:**",
+    "dev:build:server": "webpack --config ./config/webpack.server.js --watch",
     "dev:start": "nodemon ./build/bundle.js",
-    "dev:build:client":"webpack --config ./webpack.client.js --watch"
+    "dev:build:client": "webpack --config ./config/webpack.client.js --watch"
   },
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
     "express": "^4.16.4",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "webpack-merge": "^4.1.4",
     "webpack-node-externals": "^1.7.2"
   }
 }
