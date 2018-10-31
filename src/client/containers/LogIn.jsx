@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import HeaderComponent from './common/Header';
 
 export default class LogIn extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ export default class LogIn extends Component {
   render() {
     return (
       <div>
+        <HeaderComponent />
         <h1>Hello LogIn</h1>
         <button onClick={this.showMsg} type="button">Click</button>
       </div>
