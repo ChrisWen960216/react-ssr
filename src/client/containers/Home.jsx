@@ -18,14 +18,14 @@ class Home extends Component {
 
   render() {
     const { count } = this.state;
-    const { name } = this.props;
+    const { home } = this.props;
     return (
       <div>
         <HeaderComponent />
         <h1>
           Hello
           {' '}
-          {name}
+          {home}
 :
           {count}
         </h1>
@@ -36,15 +36,15 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  name: PropTypes.string,
+  home: PropTypes.string,
 };
 
 Home.defaultProps = {
-  name: '',
+  home: '',
 };
 
 function mapStateToProps(state) {
-  return { name: state.name };
+  return { ...state.home };
 }
 
 export default connect(mapStateToProps)(Home);
