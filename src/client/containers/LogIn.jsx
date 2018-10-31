@@ -4,17 +4,25 @@ import HeaderComponent from './common/Header';
 export default class LogIn extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      count: 0,
+    };
     this.showMsg = this.showMsg.bind(this);
   }
 
-  showMsg() {}
+  showMsg() {
+    this.setState(preState => ({ ...preState, count: preState.count + 1 }));
+  }
 
   render() {
+    const { count } = this.state;
     return (
       <div>
         <HeaderComponent />
-        <h1>Hello LogIn</h1>
+        <h1>
+          LogInCount:
+          {count}
+        </h1>
         <button onClick={this.showMsg} type="button">Click</button>
       </div>
     );
