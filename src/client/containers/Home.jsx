@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import HeaderComponent from './common/Header';
 
@@ -33,6 +34,14 @@ class Home extends Component {
     );
   }
 }
+
+Home.propTypes = {
+  name: PropTypes.string,
+};
+
+Home.defaultProps = {
+  name: '',
+};
 
 function mapStateToProps(state) {
   return { name: state.name };
