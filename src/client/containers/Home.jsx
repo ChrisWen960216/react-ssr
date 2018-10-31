@@ -23,19 +23,25 @@ class Home extends Component {
     this.setState(preState => ({ count: preState.count + 1 }));
   }
 
+  renderHomeList() {
+    const { homeList } = this.props;
+    const homeListDOM = homeList.length > 0
+      ? homeList.map(item => <li key={item.id}>{item.title}</li>)
+      : null;
+    return homeListDOM;
+  }
+
   render() {
     const { count } = this.state;
-    const { home } = this.props;
     return (
       <div>
         <HeaderComponent />
         <h1>
-          Hello
-          {' '}
-          {home}
-:
           {count}
         </h1>
+        <ul>
+          {this.renderHomeList()}
+        </ul>
         <button onClick={this.showMsg} type="button">Click</button>
       </div>
     );
@@ -43,12 +49,12 @@ class Home extends Component {
 }
 
 Home.propTypes = {
-  home: PropTypes.string,
+  homeList: PropTypes.arrayOf(PropTypes.shape({ id: PropTypes.number, title: PropTypes.string })),
   getHomeList: PropTypes.func.isRequired,
 };
 
 Home.defaultProps = {
-  home: '',
+  homeList: [],
 };
 
 function mapStateToProps(state) {
