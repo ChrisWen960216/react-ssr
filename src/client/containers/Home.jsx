@@ -5,6 +5,10 @@ import HeaderComponent from './common/Header';
 import getHomeList from '../redux/home/action';
 
 class Home extends Component {
+  static loadData() {
+
+  }
+
   constructor(props) {
     super(props);
     this.state = {

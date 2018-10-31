@@ -1,17 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import Routes from '../routes';
+import RoutesList from '../routes';
 import generateStore from './store';
 
 
 const APP = () => (
   <Provider store={generateStore()}>
     <BrowserRouter>
-
-      {Routes}
-
+      <div>
+        {RoutesList.map(route => <Route {...route} key={route.path} />)}
+      </div>
     </BrowserRouter>
   </Provider>
 );
