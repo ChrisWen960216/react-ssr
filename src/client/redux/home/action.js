@@ -1,5 +1,7 @@
-import axios from 'axios';
 import { GET_HOME_LIST_FAILURE, GET_HOME_LIST_SUCCESS } from './actionType';
+
+import clientRequest from '../../request';
+import serverRequest from '../../../server/request';
 
 const serect = 'M5s2sPneDE';
 
@@ -18,13 +20,9 @@ function getHomeListFailure() {
 }
 
 function getHomeList(server) {
-  let url = '';
-  if (server) {
-    url = `http://47.95.113.63/ssr/api/news.json?secret=${serect}`;
-  } else {
-    url = `/api/news.json?secret=${serect}`;
-  }
-  return dispatch => axios.get(url)
+  const request = server ? serverRequest : clientRequest;
+
+  return dispatch => request.get(`/api/news.json?secret=${serect}`)
     .then((res) => {
       const { data: { success = false, data = [] } } = res;
       if (success) {

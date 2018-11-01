@@ -1466,7 +1466,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _actionType = __webpack_require__(/*! ./actionType */ \"./src/client/redux/home/actionType.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar serect = 'M5s2sPneDE';\n\nfunction getHomeListSuccess(data) {\n  return {\n    type: _actionType.GET_HOME_LIST_SUCCESS,\n    payload: data\n  };\n}\n\nfunction getHomeListFailure() {\n  return {\n    type: _actionType.GET_HOME_LIST_FAILURE,\n    payload: null\n  };\n}\n\nfunction getHomeList(server) {\n  var url = '';\n  if (server) {\n    url = 'http://47.95.113.63/ssr/api/news.json?secret=' + serect;\n  } else {\n    url = '/api/news.json?secret=' + serect;\n  }\n  return function (dispatch) {\n    return _axios2.default.get(url).then(function (res) {\n      var _res$data = res.data,\n          _res$data$success = _res$data.success,\n          success = _res$data$success === undefined ? false : _res$data$success,\n          _res$data$data = _res$data.data,\n          data = _res$data$data === undefined ? [] : _res$data$data;\n\n      if (success) {\n        return dispatch(getHomeListSuccess(data));\n      }\n      return dispatch(getHomeListFailure());\n    });\n  };\n}\n\nexports.default = getHomeList;\n\n//# sourceURL=webpack:///./src/client/redux/home/action.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _actionType = __webpack_require__(/*! ./actionType */ \"./src/client/redux/home/actionType.js\");\n\nvar _request = __webpack_require__(/*! ../../request */ \"./src/client/request.js\");\n\nvar _request2 = _interopRequireDefault(_request);\n\nvar _request3 = __webpack_require__(/*! ../../../server/request */ \"./src/server/request.js\");\n\nvar _request4 = _interopRequireDefault(_request3);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar serect = 'M5s2sPneDE';\n\nfunction getHomeListSuccess(data) {\n  return {\n    type: _actionType.GET_HOME_LIST_SUCCESS,\n    payload: data\n  };\n}\n\nfunction getHomeListFailure() {\n  return {\n    type: _actionType.GET_HOME_LIST_FAILURE,\n    payload: null\n  };\n}\n\nfunction getHomeList(server) {\n  var request = server ? _request4.default : _request2.default;\n\n  return function (dispatch) {\n    return request.get('/api/news.json?secret=' + serect).then(function (res) {\n      var _res$data = res.data,\n          _res$data$success = _res$data.success,\n          success = _res$data$success === undefined ? false : _res$data$success,\n          _res$data$data = _res$data.data,\n          data = _res$data$data === undefined ? [] : _res$data$data;\n\n      if (success) {\n        return dispatch(getHomeListSuccess(data));\n      }\n      return dispatch(getHomeListFailure());\n    });\n  };\n}\n\nexports.default = getHomeList;\n\n//# sourceURL=webpack:///./src/client/redux/home/action.js?");
 
 /***/ }),
 
@@ -1494,6 +1494,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
+/***/ "./src/client/request.js":
+/*!*******************************!*\
+  !*** ./src/client/request.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar instance = _axios2.default.create({\n  baseURL: '/'\n});\n\nexports.default = instance;\n\n//# sourceURL=webpack:///./src/client/request.js?");
+
+/***/ }),
+
 /***/ "./src/client/store.js":
 /*!*****************************!*\
   !*** ./src/client/store.js ***!
@@ -1515,6 +1527,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Home = __webpack_require__(/*! ./client/containers/Home */ \"./src/client/containers/Home.jsx\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _LogIn = __webpack_require__(/*! ./client/containers/LogIn */ \"./src/client/containers/LogIn.jsx\");\n\nvar _LogIn2 = _interopRequireDefault(_LogIn);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// import React from 'react';\n// import { Route } from 'react-router-dom';\n\nexports.default = [{\n  path: '/',\n  component: _Home2.default,\n  exact: true,\n  loadData: _Home2.default.loadData\n}, {\n  path: '/login',\n  component: _LogIn2.default\n}];\n\n//# sourceURL=webpack:///./src/routes.js?");
+
+/***/ }),
+
+/***/ "./src/server/request.js":
+/*!*******************************!*\
+  !*** ./src/server/request.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar instance = _axios2.default.create({\n  baseURL: 'http://47.95.113.63/ssr'\n});\n\nexports.default = instance;\n\n//# sourceURL=webpack:///./src/server/request.js?");
 
 /***/ })
 
