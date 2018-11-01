@@ -18,19 +18,19 @@ app.use('/api', proxy('http://47.95.113.63', {
 app.get('*', (request, response) => {
   const store = generateStore();
 
-  // const matchedRoutes = matchRoutes(RoutesList, request.path);
+  const matchedRoutes = matchRoutes(RoutesList, request.path);
 
-  // const promisese = [];
+  const promisese = [];
 
-  // matchedRoutes.forEach((item) => {
-  //   if (item.route.loadData) {
-  //     promisese.push(item.route.loadData(store));
-  //   }
-  // });
+  matchedRoutes.forEach((item) => {
+    if (item.route.loadData) {
+      promisese.push(item.route.loadData(store));
+    }
+  });
 
-  // Promise.all(promisese).then(() => {
-  response.send(render(store, request));
-  // });
+  Promise.all(promisese).then(() => {
+    response.send(render(store, request));
+  });
 });
 
 app.listen(3000);

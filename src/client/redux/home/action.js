@@ -17,8 +17,14 @@ function getHomeListFailure() {
   };
 }
 
-function getHomeList() {
-  return dispatch => axios.get(`/api/news.json?secret=${serect}`)
+function getHomeList(server) {
+  let url = '';
+  if (server) {
+    url = `http://47.95.113.63/ssr/api/news.json?secret=${serect}`;
+  } else {
+    url = `/api/news.json?secret=${serect}`;
+  }
+  return dispatch => axios.get(url)
     .then((res) => {
       const { data: { success = false, data = [] } } = res;
       if (success) {
