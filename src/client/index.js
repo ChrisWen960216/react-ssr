@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import RoutesList from '../routes';
-import generateStore from './store';
+import { getClientStore } from './store';
 
 
 const APP = () => (
-  <Provider store={generateStore()}>
+  <Provider store={getClientStore()}>
     <BrowserRouter>
       <div>
         {RoutesList.map(route => <Route {...route} key={route.path} />)}

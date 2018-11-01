@@ -17,10 +17,12 @@ class Home extends Component {
     this.showMsg = this.showMsg.bind(this);
   }
 
-
   componentDidMount() {
-    const { getHomeList: getHomeListReq } = this.props;
-    return getHomeListReq();
+    const { getHomeList: getHomeListReq, homeList } = this.props;
+    if (!homeList.length) {
+      return getHomeListReq();
+    }
+    return true;
   }
 
   showMsg() {

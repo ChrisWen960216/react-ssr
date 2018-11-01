@@ -7,4 +7,10 @@ function generateStore() {
   return store;
 }
 
-export default generateStore;
+function getClientStore() {
+  const defaultState = window.context.state;
+  const store = createStore(reducer, defaultState, applyMiddleware(thunk));
+  return store;
+}
+
+export { generateStore, getClientStore };

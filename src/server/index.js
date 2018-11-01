@@ -2,7 +2,7 @@ import express from 'express';
 
 import { matchRoutes } from 'react-router-config';
 import render from './utils';
-import generateStore from '../client/store';
+import { generateStore } from '../client/store';
 import RoutesList from '../routes';
 
 const app = express();
