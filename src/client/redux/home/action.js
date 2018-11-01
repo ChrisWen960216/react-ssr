@@ -13,7 +13,7 @@ function getHomeListSuccess(data) {
 function getHomeListFailure() {
   return {
     type: GET_HOME_LIST_FAILURE,
-    payload: null,
+    payload: [],
   };
 }
 
