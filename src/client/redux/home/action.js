@@ -18,16 +18,14 @@ function getHomeListFailure() {
 }
 
 function getHomeList() {
-  return (dispatch) => {
-    axios.get(`http://47.95.113.63/ssr/api/news.json?secret=${serect}`)
-      .then((res) => {
-        const { data: { success = false, data = [] } } = res;
-        if (success) {
-          return dispatch(getHomeListSuccess(data));
-        }
-        return dispatch(getHomeListFailure());
-      });
-  };
+  return dispatch => axios.get(`http://47.95.113.63/ssr/api/news.json?secret=${serect}`)
+    .then((res) => {
+      const { data: { success = false, data = [] } } = res;
+      if (success) {
+        return dispatch(getHomeListSuccess(data));
+      }
+      return dispatch(getHomeListFailure());
+    });
 }
 
 export default getHomeList;

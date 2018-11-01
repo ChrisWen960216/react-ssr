@@ -5,8 +5,8 @@ import HeaderComponent from './common/Header';
 import getHomeList from '../redux/home/action';
 
 class Home extends Component {
-  static loadData() {
-
+  static loadData(store) {
+    return store.dispatch(getHomeList());
   }
 
   constructor(props) {
@@ -24,13 +24,13 @@ class Home extends Component {
   }
 
   showMsg() {
-    this.setState(preState => ({ count: preState.count + 1 }));
+    this.setState(prevState => ({ count: prevState.count + 1 }));
   }
 
   renderHomeList() {
     const { homeList } = this.props;
     const homeListDOM = homeList.length > 0
-      ? homeList.map(item => <li key={item.id}>{item.title}</li>)
+      ? homeList.map(item => <div key={item.id}>{item.title}</div>)
       : null;
     return homeListDOM;
   }
@@ -43,9 +43,7 @@ class Home extends Component {
         <h1>
           {count}
         </h1>
-        <ul>
-          {this.renderHomeList()}
-        </ul>
+        {this.renderHomeList()}
         <button onClick={this.showMsg} type="button">Click</button>
       </div>
     );
