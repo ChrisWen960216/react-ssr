@@ -6,8 +6,7 @@ import getHomeList from '../redux/home/action';
 
 class Home extends Component {
   static loadData(store) {
-    const server = true;
-    return store.dispatch(getHomeList(server));
+    return store.dispatch(getHomeList());
   }
 
   constructor(props) {
