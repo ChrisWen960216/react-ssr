@@ -51,3 +51,10 @@ export function logOut() {
       return dispatch(logOutFailure());
     });
 }
+
+export function getLogStatus() {
+  return {
+    type: actionType.LOG_STATUS,
+    payload: null,
+  };
+}

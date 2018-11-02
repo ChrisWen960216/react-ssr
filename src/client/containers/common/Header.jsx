@@ -2,18 +2,30 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logIn } from '../../redux/logIn/action';
+import { getLogStatus, logIn, logOut } from '../../redux/logIn/action';
 
 
 class HeaderComponent extends Component {
   static loadData(store) {
-    return store.dispatch(logIn());
+    return store.dispatch(getLogStatus());
   }
 
   constructor(props) {
     super(props);
     this.state = {};
     this.renderNavList = this.renderNavList.bind(this);
+    this.logOut = this.logOut.bind(this);
+    this.logIn = this.logIn.bind(this);
+  }
+
+  logOut() {
+    const { logOut: sendLogoOut } = this.props;
+    return sendLogoOut();
+  }
+
+  logIn() {
+    const { logIn: sendLogIn } = this.props;
+    return sendLogIn();
   }
 
   renderNavList() {
@@ -22,7 +34,7 @@ class HeaderComponent extends Component {
       <Fragment>
         {' '}
         <li>
-          <Link to="/logout">Logout</Link>
+          <button type="button" onClick={this.logOut}>LogOut</button>
         </li>
         <li>
           <Link to="/trans">trans</Link>
@@ -32,6 +44,7 @@ class HeaderComponent extends Component {
       <li>
         {' '}
         <Link to="/login">Login</Link>
+        <button type="button" onClick={this.logIn}>LogIn</button>
       </li>
     );
     return navList;
@@ -58,12 +71,17 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps() {
-  return {};
+function mapDispatchToProps(dispatch) {
+  return {
+    logIn: () => dispatch(logIn()),
+    logOut: () => dispatch(logOut()),
+  };
 }
 
 HeaderComponent.propTypes = {
   login: PropTypes.bool,
+  logOut: PropTypes.func.isRequired,
+  logIn: PropTypes.func.isRequired,
 };
 
 HeaderComponent.defaultProps = {
