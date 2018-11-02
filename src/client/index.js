@@ -12,7 +12,6 @@ const APP = () => (
     <BrowserRouter>
       <div>
         {renderRoutes(RoutesList)}
-        {/* {RoutesList.map(route => <Route {...route} key={route.path} />)} */}
       </div>
     </BrowserRouter>
   </Provider>

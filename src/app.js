@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { renderRoutes } from 'react-router-config';
-import RoutesList from './routes';
 import HeaderComponent from './client/containers/common/Header';
 
 

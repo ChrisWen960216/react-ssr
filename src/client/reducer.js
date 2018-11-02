@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
 
 import home from './redux/home/reducer';
+import login from './redux/logIn/reducer';
 
-const name = (state = { name: 'christianWen' }) => state;
-
-const reducer = combineReducers({ name, home });
+const reducer = combineReducers({ login, home });
 
 export default reducer;
