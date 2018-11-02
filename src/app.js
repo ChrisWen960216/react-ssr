@@ -13,12 +13,11 @@ export default class App extends Component {
 
 
   render() {
-    const { route } = this.props;
-    console.log(route);
+    const { route: { routes } } = this.props;
     return (
       <div>
         <HeaderComponent />
-        {renderRoutes(RoutesList[0].routes)}
+        {renderRoutes(routes)}
       </div>
     );
   }

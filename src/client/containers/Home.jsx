@@ -31,7 +31,7 @@ class Home extends Component {
   renderHomeList() {
     const { homeList } = this.props;
     const homeListDOM = homeList.length > 0
-      ? homeList.map(item => <div key={item.id}>{item.title}</div>)
+      ? homeList.map(item => <li key={item.id}>{item.title}</li>)
       : null;
     return homeListDOM;
   }
@@ -43,7 +43,9 @@ class Home extends Component {
         <h1>
           {count}
         </h1>
-        {this.renderHomeList()}
+        <ul>
+          {this.renderHomeList()}
+        </ul>
         <button onClick={this.showMsg} type="button">Click</button>
       </div>
     );
