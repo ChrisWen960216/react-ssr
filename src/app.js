@@ -5,6 +5,10 @@ import HeaderComponent from './client/containers/common/Header';
 
 
 export default class App extends Component {
+  static loadData(store) {
+    return HeaderComponent.loadData(store);
+  }
+
   constructor(props) {
     super(props);
     this.state = {};

@@ -8,9 +8,11 @@ import App from './app';
 const RoutesList = [{
   path: '/',
   component: App,
+  loadData: App.loadData,
   routes: [{
     path: '/login',
     component: LogIn,
+    loadData: LogIn.loadData,
   },
   {
     path: '/',

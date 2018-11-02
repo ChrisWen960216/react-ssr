@@ -2,9 +2,14 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { logIn } from '../../redux/logIn/action';
 
 
 class HeaderComponent extends Component {
+  static loadData(store) {
+    return store.dispatch(logIn());
+  }
+
   constructor(props) {
     super(props);
     this.state = {};
@@ -42,8 +47,6 @@ class HeaderComponent extends Component {
           </li>
           {this.renderNavList()}
         </ul>
-
-
       </header>
     );
   }
