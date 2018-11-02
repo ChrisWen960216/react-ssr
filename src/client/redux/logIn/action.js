@@ -30,6 +30,20 @@ function logOutFailure() {
   };
 }
 
+function getLogStatusSuccess(data) {
+  return {
+    type: actionType.LOGIN_STATUS_SUCCESS,
+    payload: data,
+  };
+}
+
+function getLogStatusFailure() {
+  return {
+    type: actionType.LOGIN_STATUS_FAILURE,
+    payload: null,
+  };
+}
+
 export function logIn() {
   return (dispatch, getState, axiosIstance) => axiosIstance.get(`/api/login.json?secret=${serect}`)
     .then((res) => {
@@ -53,8 +67,12 @@ export function logOut() {
 }
 
 export function getLogStatus() {
-  return {
-    type: actionType.LOG_STATUS,
-    payload: null,
-  };
+  return (dispatch, getState, axiosIstance) => axiosIstance.get(`/api/login.json?secret=${serect}`)
+    .then((res) => {
+      const { data: { success = false, data } } = res;
+      if (success) {
+        return dispatch(getLogStatusSuccess(data));
+      }
+      return dispatch(getLogStatusFailure());
+    });
 }

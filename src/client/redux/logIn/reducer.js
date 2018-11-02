@@ -1,18 +1,18 @@
-import {
-  LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS, LOGOUT_FAILURE, LOG_STATUS,
-} from './actionType';
+import * as actionType from './actionType';
 
 const initState = { login: false };
 
 function logIn(state = initState, action) {
   switch (action.type) {
-    case LOGIN_SUCCESS:
+    case actionType.LOGIN_SUCCESS:
       return { ...state, login: true };
-    case LOGOUT_SUCCESS:
+    case actionType.LOGOUT_SUCCESS:
       return { ...state, login: false };
-    case LOGIN_FAILURE:
-    case LOGOUT_FAILURE:
-    case LOG_STATUS:
+    case actionType.LOGIN_STATUS_SUCCESS:
+      return { ...state, ...action.payload };
+    case actionType.LOGIN_STATUS_FAILURE:
+    case actionType.LOGIN_FAILURE:
+    case actionType.LOGOUT_FAILURE:
     default:
       return state;
   }
