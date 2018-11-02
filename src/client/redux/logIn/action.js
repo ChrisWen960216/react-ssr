@@ -67,11 +67,11 @@ export function logOut() {
 }
 
 export function getLogStatus() {
-  return (dispatch, getState, axiosIstance) => axiosIstance.get(`/api/login.json?secret=${serect}`)
+  return (dispatch, getState, axiosIstance) => axiosIstance.get(`/api/isLogin.json?secret=${serect}`)
     .then((res) => {
-      const { data: { success = false, data } } = res;
+      const { data: { success = false, data: logInData } } = res;
       if (success) {
-        return dispatch(getLogStatusSuccess(data));
+        return dispatch(getLogStatusSuccess(logInData));
       }
       return dispatch(getLogStatusFailure());
     });
