@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import HeaderComponent from './common/Header';
 
 export default class LogIn extends Component {
   constructor(props) {
@@ -18,7 +17,6 @@ export default class LogIn extends Component {
     const { count } = this.state;
     return (
       <div>
-        <HeaderComponent />
         <h1>
           LogInCount:
           {count}

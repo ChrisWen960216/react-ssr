@@ -3,14 +3,23 @@
 
 import Home from './client/containers/Home';
 import LogIn from './client/containers/LogIn';
+import App from './app';
 
-export default [{
+const RoutesList = [{
   path: '/',
-  component: Home,
-  exact: true,
-  loadData: Home.loadData,
-}, {
-  path: '/login',
-  component: LogIn,
+  component: App,
+  routes: [{
+    path: '/login',
+    component: LogIn,
+  },
+  {
+    path: '/',
+    component: Home,
+    exact: true,
+    loadData: Home.loadData,
+  },
+  ],
 },
 ];
+
+export default RoutesList;

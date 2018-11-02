@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import HeaderComponent from './common/Header';
 import getHomeList from '../redux/home/action';
 
 class Home extends Component {
@@ -41,7 +40,6 @@ class Home extends Component {
     const { count } = this.state;
     return (
       <div>
-        <HeaderComponent />
         <h1>
           {count}
         </h1>
