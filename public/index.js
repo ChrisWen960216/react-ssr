@@ -1490,7 +1490,7 @@ eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/i
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _reducer = __webpack_require__(/*! ./redux/home/reducer */ \"./src/client/redux/home/reducer.js\");\n\nvar _reducer2 = _interopRequireDefault(_reducer);\n\nvar _reducer3 = __webpack_require__(/*! ./redux/logIn/reducer */ \"./src/client/redux/logIn/reducer.js\");\n\nvar _reducer4 = _interopRequireDefault(_reducer3);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar reducer = (0, _redux.combineReducers)({ login: _reducer4.default, home: _reducer2.default });\n\nexports.default = reducer;\n\n//# sourceURL=webpack:///./src/client/reducer.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _reducer = __webpack_require__(/*! ./redux/home/reducer */ \"./src/client/redux/home/reducer.js\");\n\nvar _reducer2 = _interopRequireDefault(_reducer);\n\nvar _reducer3 = __webpack_require__(/*! ./redux/logIn/reducer */ \"./src/client/redux/logIn/reducer.js\");\n\nvar _reducer4 = _interopRequireDefault(_reducer3);\n\nvar _reducer5 = __webpack_require__(/*! ./redux/trans/reducer */ \"./src/client/redux/trans/reducer.js\");\n\nvar _reducer6 = _interopRequireDefault(_reducer5);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar reducer = (0, _redux.combineReducers)({ login: _reducer4.default, home: _reducer2.default, trans: _reducer6.default });\n\nexports.default = reducer;\n\n//# sourceURL=webpack:///./src/client/reducer.js?");
 
 /***/ }),
 
@@ -1563,6 +1563,30 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _actionType = __webpack_require__(/*! ./actionType */ \"./src/client/redux/logIn/actionType.js\");\n\nvar actionType = _interopRequireWildcard(_actionType);\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nvar initState = { login: false };\n\nfunction logIn() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;\n  var action = arguments[1];\n\n  switch (action.type) {\n    case actionType.LOGIN_SUCCESS:\n      return _extends({}, state, { login: true });\n    case actionType.LOGOUT_SUCCESS:\n      return _extends({}, state, { login: false });\n    case actionType.LOGIN_STATUS_SUCCESS:\n      return _extends({}, state, action.payload);\n    case actionType.LOGIN_STATUS_FAILURE:\n    case actionType.LOGIN_FAILURE:\n    case actionType.LOGOUT_FAILURE:\n    default:\n      return state;\n  }\n}\n\nexports.default = logIn;\n\n//# sourceURL=webpack:///./src/client/redux/logIn/reducer.js?");
+
+/***/ }),
+
+/***/ "./src/client/redux/trans/actionType.js":
+/*!**********************************************!*\
+  !*** ./src/client/redux/trans/actionType.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar GET_TRANSILATION_LIST_SUCCESS = exports.GET_TRANSILATION_LIST_SUCCESS = 'GET_TRANSILATION_LIST_SUCCESS';\nvar GET_TRANSILATION_LIST_FAILURE = exports.GET_TRANSILATION_LIST_FAILURE = 'GET_TRANSILATION_LIST_FAILURE';\n\n//# sourceURL=webpack:///./src/client/redux/trans/actionType.js?");
+
+/***/ }),
+
+/***/ "./src/client/redux/trans/reducer.js":
+/*!*******************************************!*\
+  !*** ./src/client/redux/trans/reducer.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _actionType = __webpack_require__(/*! ./actionType */ \"./src/client/redux/trans/actionType.js\");\n\nvar actionType = _interopRequireWildcard(_actionType);\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }\n\nvar initState = { trans: [] };\n\nfunction trans() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initState;\n  var action = arguments[1];\n\n  switch (action.type) {\n    case actionType.GET_TRANSILATION_LIST_SUCCESS:\n      return _extends({}, state, { trans: action.payload });\n    case actionType.GET_TRANSILATION_LIST_FAILURE:\n      return _extends({}, state, { trans: initState.trans });\n    default:\n      return _extends({}, state);\n  }\n}\n\nexports.default = trans;\n\n//# sourceURL=webpack:///./src/client/redux/trans/reducer.js?");
 
 /***/ }),
 
