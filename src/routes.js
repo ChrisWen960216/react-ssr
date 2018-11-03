@@ -3,6 +3,7 @@
 
 import Home from './client/containers/Home';
 import LogIn from './client/containers/LogIn';
+import Trans from './client/containers/Trans';
 import App from './app';
 
 const RoutesList = [{
@@ -13,6 +14,11 @@ const RoutesList = [{
     path: '/login',
     component: LogIn,
     loadData: LogIn.loadData,
+  },
+  {
+    path: '/trans',
+    component: Trans,
+    loadData: Trans.loadData,
   },
   {
     path: '/',

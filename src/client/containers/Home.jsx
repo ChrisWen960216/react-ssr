@@ -17,9 +17,9 @@ class Home extends Component {
   }
 
   componentDidMount() {
-    const { getHomeList: getHomeListReq, homeList } = this.props;
+    const { getHomeList: sendHomeListReq, homeList } = this.props;
     if (!homeList.length) {
-      return getHomeListReq();
+      return sendHomeListReq();
     }
     return true;
   }
@@ -62,7 +62,7 @@ Home.defaultProps = {
 };
 
 function mapStateToProps(state) {
-  return { ...state.home };
+  return { ...state.home, ...state.trans };
 }
 
 function mapDispatchToProps(dispatch) {

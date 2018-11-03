@@ -24,7 +24,10 @@ app.get('*', (request, response) => {
 
   matchedRoutes.forEach((item) => {
     if (item.route.loadData) {
-      promisese.push(item.route.loadData(store));
+      const promise = new Promise((resolve) => {
+        item.route.loadData(store).then(resolve).catch(resolve);
+      });
+      promisese.push(promise);
     }
   });
 
