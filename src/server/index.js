@@ -16,7 +16,7 @@ app.use('/api', proxy('http://47.95.113.63', {
 }));
 
 app.get('*', (request, response) => {
-  const store = generateStore();
+  const store = generateStore(request);
 
   const matchedRoutes = matchRoutes(RoutesList, request.path);
 

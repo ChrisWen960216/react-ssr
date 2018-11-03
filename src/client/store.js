@@ -5,10 +5,10 @@ import reducer from './reducer';
 import clientRequest from './request';
 import serverRequest from '../server/request';
 
-function generateStore() {
+function generateStore(req) {
   const store = createStore(
     reducer,
-    applyMiddleware(thunk.withExtraArgument(serverRequest)),
+    applyMiddleware(thunk.withExtraArgument(serverRequest(req))),
   );
   return store;
 }

@@ -1,7 +1,12 @@
 import axios from 'axios';
 
-const instance = axios.create(({
-  baseURL: 'http://47.95.113.63/ssr',
-}));
+function createInstance(request) {
+  return axios.create(({
+    baseURL: 'http://47.95.113.63/ssr',
+    headers: {
+      cookie: request.get('cookie') || null,
+    },
+  }));
+}
 
-export default instance;
+export default createInstance;
