@@ -12,6 +12,22 @@ const clientConfig = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  module: {
+    rules: [
+      {
+        test: /\.css?$/,
+        use: ['style-loader', {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            modules: true,
+            localIndentName: '[name]_[local]_[hash:base64]',
+          },
+        }],
+      },
+    ],
+
+  },
 };
 
 module.exports = merge(commonConfig, clientConfig);

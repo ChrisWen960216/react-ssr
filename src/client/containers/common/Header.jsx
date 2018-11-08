@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getLogStatus, logIn, logOut } from '../../redux/logIn/action';
+import headerStyles from './Header.css';
 
 
 class HeaderComponent extends Component {
@@ -16,7 +17,12 @@ class HeaderComponent extends Component {
     this.renderNavList = this.renderNavList.bind(this);
     this.logOut = this.logOut.bind(this);
     this.logIn = this.logIn.bind(this);
+
+    if (headerStyles._getCss) {
+      this.styles = headerStyles._getCss();
+    }
   }
+
 
   logOut() {
     const { logOut: sendLogoOut } = this.props;

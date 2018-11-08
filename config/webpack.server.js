@@ -15,6 +15,22 @@ const serverConfig = {
     extensions: ['.js', '.jsx'],
   },
   externals: [nodeExternals()],
+  module: {
+    rules: [
+      {
+        test: /\.css?$/,
+        use: ['isomorphic-style-loader', {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            modules: true,
+            localIndentName: '[name]_[local]_[hash:base64]',
+          },
+        }],
+      },
+    ],
+
+  },
 
 };
 
